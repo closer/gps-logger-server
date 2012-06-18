@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 
 require "sinatra"
-
 require "erb"
-
 require "mongoid"
 require "mongoid_spacial"
 
@@ -26,24 +24,26 @@ class Point
   field :location,  type: Array, spacial: true
 end
 
+seed = ('0'..'z').to_a
+
 get '/' do
-  # TODO map view
   erb :index
 end
 
+get '/session/new' do
+  20.times.map{ seed[rand(seed.size)] }
+end
+
 post '/track' do
-  # TODO tacking
-  # :params
-  #   - session
-  #   - latitude
-  #   - longitude
-
-  # TODO saving
-  # Point.create
-  #   session
-  #   location{ lat, lng }
+  p params
+  if params[:session] && params[:latitude] && params[:longitude]
+    Point.create({ session: params[:session], location:{ lat: params[:latitude], lng: params[:longitude] }, timestamp: DateTime.now}).to_json
+  else
+    {:status => 'failed'}.to_json
+  end
 end
 
-get '/:latitude/:longitude' do |latitude, longitude|
-  # TODO Search points from latitude and longitude
+get '/points/:session' do |session|
+  Point.where(:session => session).to_json
 end
+
