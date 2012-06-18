@@ -1,0 +1,6 @@
+development:
+  sessions:
+    default:
+      hosts:
+        - localhost
+      database: gpslogger
