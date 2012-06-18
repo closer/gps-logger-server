@@ -1,4 +1,10 @@
+# -*- coding: utf-8 -*-
+
 require "sinatra"
+
+require "erb"
+
+=begin
 require "mongoid"
 require "mongoid_spacial"
 
@@ -20,9 +26,11 @@ class Point
   field :timestamp, type: DateTime
   field :location,  type: Array, spacial: true
 end
+=end
 
 get '/' do
   # TODO map view
+  erb :index
 end
 
 post '/track' do
@@ -32,7 +40,7 @@ post '/track' do
   #   - latitude
   #   - longitude
 
-  # TODO saveing
+  # TODO saving
   # Point.create
   #   session
   #   location{ lat, lng }

@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+  <head>
+    <title></title>
+    <style>
+      html, body {
+        margin:0;
+        padding:0;
+        width:100%;
+        height:100%;
+        overflow:hidden;
+      }
+      #gMap {
+        width:100%;
+        height:100%;
+        background:#ffcccc;
+      }
+    </style>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/jquery.GoogleMaps.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        $('#gMap').GoogleMaps();
+      });
+    </script>
+  </head>
+  <body>
+    <div id="gMap"></div>
+  </body>
+</html>
