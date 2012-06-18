@@ -4,7 +4,6 @@ require "sinatra"
 
 require "erb"
 
-=begin
 require "mongoid"
 require "mongoid_spacial"
 
@@ -26,7 +25,6 @@ class Point
   field :timestamp, type: DateTime
   field :location,  type: Array, spacial: true
 end
-=end
 
 get '/' do
   # TODO map view
